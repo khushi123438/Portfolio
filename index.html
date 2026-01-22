@@ -767,30 +767,32 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
 
 <script>
-window.onload = function() {
+window.onload = function () {
 
-    // Initialize EmailJS
-    emailjs.init("VN8mWQidw1GyhSMUl"); // Your User ID
+    emailjs.init("VN8mWQidw1GyhSMUl");
 
-    // Contact Form
-    const contactForm = document.getElementById("contact-form");
-    contactForm.addEventListener("submit", function(e) {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
+        alert("Sending message...");
+
         emailjs.sendForm(
             "service_kwxpk2m",
             "template_fygizul",
             this
         ).then(
-            function() {
-                alert("Message sent successfully!");
-                contactForm.reset();
+            () => {
+                alert("✅ Message sent successfully!");
+                form.reset();
             },
-            function(error) {
-                alert("Failed to send message. Check console.");
-                console.error("EmailJS error:", error);
+            (error) => {
+                alert("❌ Failed to send message");
+                console.error(error);
             }
         );
     });
+};
     const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
