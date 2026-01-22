@@ -767,12 +767,30 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
 
 <script>
+window.onload = function() {
 
-const contactForm = document.getElementById('contact-form');
+    // Initialize EmailJS
+    emailjs.init("VN8mWQidw1GyhSMUl"); // Your User ID
 
-
-
-   
+    // Contact Form
+    const contactForm = document.getElementById("contact-form");
+    contactForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        emailjs.sendForm(
+            "service_kwxpk2m",
+            "template_fygizul",
+            this
+        ).then(
+            function() {
+                alert("Message sent successfully!");
+                contactForm.reset();
+            },
+            function(error) {
+                alert("Failed to send message. Check console.");
+                console.error("EmailJS error:", error);
+            }
+        );
+    });
     const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
@@ -862,28 +880,7 @@ otherCards.forEach(card => fadeObserver.observe(card));
     });
   });
 
- window.addEventListener("load", function() {
-    emailjs.init("VN8mWQidw1GyhSMUl"); // replace this
-})();
-
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm(
-        "service_kwxpk2m",   // replace
-        "template_fygizul",  // replace
-        this
-    ).then(
-        function() {
-            alert("Message sent successfully!");
-            document.getElementById("contact-form").reset();
-        },
-        function(error) {
-            alert("Failed to send message. Try again!");
-            console.error(error);
-        }
-    );
-});
+ 
 </script>
 </body>
 </html>
