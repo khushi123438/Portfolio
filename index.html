@@ -769,21 +769,6 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
-
-  
-    contactForm.reset();
-
-    
-    alert(`Thank you, ${name}! Your message has been sent successfully.`);
-
-  
-    console.log(`Message from ${name} (${email}): ${message}`);
-});
 
 
    
