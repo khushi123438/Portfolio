@@ -671,11 +671,11 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
                     <li><strong>Tech:</strong> HTML, CSS, JS, Node.js, MongoDB</li>
                 </ul>
                 <div class="project-links">
-
+<<<<<<< HEAD
     <a href="https://greenbill.netlify.app/" target="_blank">Live Demo</a>
-
+=======
     <a href="https://greenbill.netlify.app" target="_blank">Live Demo</a>
-
+>>>>>>> e66cc0201c4052649a6bee18f1031755df41cac0
     <a href="https://github.com/khushi123438/GreenBill2.0" target="_blank">GitHub</a>
                 </div> 
         </div>
@@ -764,35 +764,29 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
   </div>
 </footer>
 
-<script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
 
 <script>
-window.onload = function () {
 
-    emailjs.init("VN8mWQidw1GyhSMUl");
+const contactForm = document.getElementById('contact-form');
 
-    const form = document.getElementById("contact-form");
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const message = this.querySelector('textarea').value;
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Sending message...");
+  
+    contactForm.reset();
 
-        emailjs.sendForm(
-            "service_kwxpk2m",
-            "template_fygizul",
-            this
-        ).then(
-            () => {
-                alert("✅ Message sent successfully!");
-                form.reset();
-            },
-            (error) => {
-                alert("❌ Failed to send message");
-                console.error(error);
-            }
-        );
-    });
-};
+    
+    alert(`Thank you, ${name}! Your message has been sent successfully.`);
+
+  
+    console.log(`Message from ${name} (${email}): ${message}`);
+});
+
+
+   
     const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
@@ -881,8 +875,6 @@ otherCards.forEach(card => fadeObserver.observe(card));
       card.classList.remove("show-tooltip");
     });
   });
-
- 
 </script>
 </body>
 </html>
