@@ -671,7 +671,11 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
                     <li><strong>Tech:</strong> HTML, CSS, JS, Node.js, MongoDB</li>
                 </ul>
                 <div class="project-links">
+<<<<<<< HEAD
     <a href="https://greenbill.netlify.app/" target="_blank">Live Demo</a>
+=======
+    <a href="https://greenbill.netlify.app" target="_blank">Live Demo</a>
+>>>>>>> e66cc0201c4052649a6bee18f1031755df41cac0
     <a href="https://github.com/khushi123438/GreenBill2.0" target="_blank">GitHub</a>
                 </div> 
         </div>
@@ -742,9 +746,10 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 
    
     <form id="contact-form" class="contact-form">
-  <input type="text" placeholder="Your Name" required>
-  <input type="email" placeholder="Your Email" required>
-  <textarea placeholder="Your Message" rows="5" required></textarea>
+  <input type="text" name="from_name" required placeholder="Your Name">
+<input type="email" name="from_email" required placeholder="Your Email">
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+
   <button type="submit">Send Message</button>
     </form>
 
@@ -870,6 +875,29 @@ otherCards.forEach(card => fadeObserver.observe(card));
       card.classList.remove("show-tooltip");
     });
   });
+
+  (function(){
+    emailjs.init("VN8mWQidw1GyhSMUl"); // replace this
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+        "service_kwxpk2m",   // replace
+        "template_fygizul",  // replace
+        this
+    ).then(
+        function() {
+            alert("Message sent successfully!");
+            document.getElementById("contact-form").reset();
+        },
+        function(error) {
+            alert("Failed to send message. Try again!");
+            console.error(error);
+        }
+    );
+});
 </script>
 </body>
 </html>
