@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khushi Pandey Portfolio</title>
+<title>Khushi | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
@@ -33,7 +33,7 @@ nav {
 .hero {
     position: relative; overflow: hidden; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #0a0f20, #00102a);
+    background: transparent;
     padding: 0 20px;
 }
 .hero-content {
@@ -90,6 +90,24 @@ nav {
 .c3 { width:100px; height:100px; background:#38BDF8; top:40%; left:50%; animation-delay:6s; }
 @keyframes floatCircle { 0%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(0,-50px) rotate(180deg);} 100%{transform:translate(0,0) rotate(360deg);} }
 
+#particles-js {
+    position: fixed;    
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;        
+}
+
+section, header, nav, footer {
+    position: relative;
+    background: transparent;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
 section { padding: 100px 20px; max-width: 1200px; margin: auto; }
 h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8; text-shadow: 0 0 5px #0ea5e9; }
@@ -97,7 +115,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 
 #about .animated-about {
     backdrop-filter: blur(10px);
-    background-color: rgba(255,255,255,0.05);
+     background: rgba(10,15,32,0.85);
     border-radius: 15px;
     padding: 40px 30px;
     max-width: 800px;
@@ -182,7 +200,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 }
 
 
-.card { backdrop-filter: blur(10px); background-color: rgba(255,255,255,0.05); border-radius: 12px; padding: 20px; margin: 20px 0; opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.card { backdrop-filter: blur(10px);  background: rgba(10,15,32,0.85); border-radius: 12px; padding: 20px; margin: 20px 0; opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
 
 
 #skills {
@@ -229,7 +247,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 }
 
 .skill-card:hover {
-  transform: scale(1.08);
+   transform: translateY(0) scale(1.08);
   box-shadow: 0 0 20px #38BDF8, 0 0 40px #0ea5e9;
   z-index: 10;
 }
@@ -287,7 +305,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 
 
 .project-card:hover {
-    transform: scale(1.08);
+   transform: translateY(0) scale(1.08);
     box-shadow: 0 0 60px #38BDF8, 0 0 80px #0ea5e9;
 }
 
@@ -555,6 +573,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 </head>
 <body>
 
+<div id="particles-js"></div>
 
 <nav>
     <div class="logo">Khushi Pandey</div>
@@ -569,6 +588,7 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
 
 
 <header id="hero" class="hero">
+  
   
   <div class="circle c1"></div>
   <div class="circle c2"></div>
@@ -622,6 +642,9 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
     <div class="skill-card" data-info="CSS styles web pages with layout, colors, animations, and responsive design.">
       <i class="fab fa-css3-alt"></i> CSS
     </div>
+    <div class="skill-card" data-info="Bootstrap is a popular CSS framework for building responsive, mobile-first websites.">
+      <i class="fab fa-bootstrap"></i> Bootstrap
+    </div>
     <div class="skill-card" data-info="JavaScript makes web pages interactive with dynamic behavior.">
       <i class="fab fa-js-square"></i> JavaScript
     </div>
@@ -671,11 +694,10 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
                     <li><strong>Tech:</strong> HTML, CSS, JS, Node.js, MongoDB</li>
                 </ul>
                 <div class="project-links">
-<<<<<<< HEAD
-    <a href="https://greenbill.netlify.app/" target="_blank">Live Demo</a>
-=======
+
+   
     <a href="https://greenbill.netlify.app" target="_blank">Live Demo</a>
->>>>>>> e66cc0201c4052649a6bee18f1031755df41cac0
+
     <a href="https://github.com/khushi123438/GreenBill2.0" target="_blank">GitHub</a>
                 </div> 
         </div>
@@ -688,8 +710,8 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
                     <li><strong>Tech:</strong> HTML, CSS, JS, Node.js, MongoDB</li>
                 </ul>
                 <div class="project-links">
-    <a href="https://NyaySetu.netlify.app" target="_blank">Live Demo</a>
-    <a href="https://github.com/khushi123438/NyaySetu" target="_blank">GitHub</a>
+    <a href="https://nyaySetu-connect.netlify.app" target="_blank">Live Demo</a>
+    <a href="https://github.com/khushi123438/NyaySetu-backend" target="_blank">GitHub</a>
 </div>
         </div>
         <div class="project-card">
@@ -764,8 +786,62 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
+    
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 175
+    },
+    "color": {
+       value: "#00ff88"
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "opacity": {
+      "value": 0.6
+    },
+    "size": {
+      "value": 3
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#00e5ff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 2
+    }
+  },
+  "interactivity": {
+     "detect_on": "window",
+  "events": {
+    "onhover": {
+      "enable": true,
+      "mode": ["grab", "repulse"]
+    }
+  },
+  "modes": {
+    "grab": {
+      "distance": 200,
+      "line_linked": {
+        "opacity": 0.8
+      }
+    },
+    "repulse": {
+      "distance": 120,
+      "duration": 0.4
+    }
+  }
+},
+    "retina_detect": true
+});
 
 const contactForm = document.getElementById('contact-form');
 
