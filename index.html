@@ -10,29 +10,128 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Poppins', sans-serif; background: #0a0f20; color: #E5E7EB; overflow-x: hidden; }
+body{
+    font-family: 'Poppins', sans-serif;
+   
+    margin: 0;
+    padding: 0;
+
+    background: #0a0f20;
+    color: #E5E7EB;
+    overflow-x: hidden;
+  
+}
 
 a { text-decoration: none; color: inherit; }
 button, .btn { background-color: #38BDF8; color: #0a0f20; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
 button:hover, .btn:hover { box-shadow: 0 0 20px #0ea5e9; transform: scale(1.05); }
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   /* sabko vertical center karega */
 
+    height: 70px;
+    padding: 0 40px;
 
-nav {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 40px; backdrop-filter: blur(10px); background-color: rgba(10,15,32,0.85);
+    position: fixed;
+    top: 0;
+    width: 100%;
+     z-index: 1000;
+
+    background: rgba(10,15,32,0.6);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(56,189,248,0.3);
 }
-.logo { font-size: 1.8rem; font-weight: 700; color: #38BDF8; }
-.nav-links { display: flex; gap: 25px; }
-.nav-links a { position: relative; transition: 0.3s; }
-.nav-links a.active::after {
-    content: ''; position: absolute; width: 100%; height: 2px; background: #38BDF8; bottom: -5px; left: 0;
+
+/* Logo fix */
+.logo{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #38BDF8;
+
+    margin: 0;        /* extra space remove */
+    line-height: 70px; /* navbar height ke equal */
+}
+/* Links */
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
+.nav-links a{
+    text-decoration: none;
+    color: #cbd5e1;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.nav-links a:hover{
+    color: #38BDF8;
+    text-shadow: 0 0 8px rgba(56,189,248,0.8);
+}
+
+/* Neon underline animation */
+.nav-links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #38BDF8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after{
+    width: 100%;
+}
+/* Hamburger icon */
+.menu-toggle{
+    display:none;
+    font-size:1.8rem;
+    color:#38BDF8;
+    cursor:pointer;
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+
+.nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background: rgba(10,15,32,0.95);
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding:25px 0;
+
+    transform: translateY(-150%);
+    transition:0.4s;
+}
+
+.nav-links.active{
+    transform: translateY(0);
+}
+
+.menu-toggle{
+    display:block;
+}
+
+}
 
 .hero {
     position: relative; overflow: hidden; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
+    
+    margin-top: 90px;
+
     background: transparent;
     padding: 0 20px;
 }
@@ -57,8 +156,10 @@ nav {
     width: 350px; max-width: 100%; border-radius: 15px;
     animation: float 4s ease-in-out infinite;
     box-shadow: 0 0 50px #38BDF8;
-    border: 50% 2px solid #0ea5e9;
+border: 2px solid #0ea5e9;
+border-radius: 50%;
 }
+
 
 .neon-text {
     font-size: 4rem; font-weight: 700; color: #38BDF8; text-transform: uppercase; letter-spacing: 2px;
@@ -286,21 +387,70 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #38BDF8;
   from { transform: translateX(-50%) translateY(15px); opacity: 0; }
   to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
-@media(max-width:768px){
 
-.project-row{
-grid-template-columns:1fr;
-text-align:center;
-}
-
-}
 
 @keyframes pulseGlow {
     0% { box-shadow: 0 0 10px #38BDF8; transform: scale(1); }
     50% { box-shadow: 0 0 30px #0ea5e9; transform: scale(1.05); }
     100% { box-shadow: 0 0 10px #38BDF8; transform: scale(1); }
 }
+@media (max-width: 768px) {
+   .project-row {
+       grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+   
+    flex-wrap: wrap;
+    gap: 40px;
+}
+  }
 
+  .project-image,
+  .project-info {
+    width: 100%;
+  }
+
+  .project-image img {
+    width: 100%;
+    max-width: 400px;  /* optional max width */
+      aspect-ratio: auto; 
+    border-radius: 12px;
+    height: auto;
+  }
+
+  
+.project-image img:hover{
+transform:scale(1.05);
+}
+
+  .tech-stack {
+        justify-content: center;  /* center the tech buttons */
+        gap: 8px 6px;             /* slightly smaller spacing */
+    }
+
+    .tech-stack span {
+        font-size: 0.75rem;       /* slightly smaller text for mobile */
+    }
+
+ .project-buttons {
+       flex-direction: column;  /* stack buttons vertically */
+        align-items: center;     /* center horizontally */
+        gap: 12px;               /* more spacing for readability */
+    }
+
+    .project-buttons a {
+        width: 90%;              /* take most of the container width */
+        max-width: 300px;        /* optional cap */
+    }
+
+.project-buttons a:hover {
+  background: #0ea5e9;
+  color: #0a0f20;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #38BDF8;
+}
+
+}
 
 .contact-item i,
 .social-icons a i {
@@ -493,12 +643,7 @@ text-align:center;
     .hero-text h1 { font-size: 3rem; }
     .hero-text h2 { font-size: 1.8rem; }
     .hero-text p.typing { font-size: 1.2rem; }
-
-    .projects {
-        flex-direction: column;
-        gap: 40px;
-        align-items: center;
-    }
+    .hero-buttons button { padding: 10px 18px; margin: 8px 0; width: 100%; max-width: 250px; }
 
     .skills {
         gap: 25px;
@@ -510,19 +655,26 @@ display:flex;
 flex-direction:column;
 gap:60px;
 }
-
-.project-row{
-display:grid;
-grid-template-columns: 1fr 1fr;
-align-items:center;
-gap:40px;
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 40px;
+  width: 100%;
 }
 
-.project-image img{
-width:100%;
-border-radius:12px;
-box-shadow:0 0 20px #38BDF8;
-transition:0.4s;
+.project-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;   /* ✅ allow natural height */
+  max-height: 250px; /* optional control */
+  aspect-ratio: 16/9;
+  display: block;
+  border-radius: 12px;
 }
 
 .project-image img:hover{
@@ -539,33 +691,90 @@ margin-bottom:15px;
 color:#cbd5e1;
 line-height:1.6;
 }
-.tech-stack span{
-padding:5px 12px;
-border:1px solid #38BDF8;
-border-radius:6px;
-margin-right:6px;
-font-size:0.8rem;
-color:#38BDF8;
-background:transparent;
-transition:0.3s;
+
+.tech-stack {
+    display: flex;          /* use flex layout */
+    flex-wrap: wrap;      
+    gap: 10px 8px;          /* vertical 10px, horizontal 8px spacing */
+    margin-top: 10px;
 }
 
-.tech-stack span:hover{
-background:#38BDF8;
-color:#0a0f20;
+.tech-stack span {
+    padding: 5px 12px;
+    border: 1px solid #38BDF8;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #38BDF8;
+    background: transparent;
+    transition: 0.3s;
+    white-space: nowrap;    /* prevents text wrapping inside button */
 }
 
-.project-buttons{
-margin-top:30px;
+.tech-stack span:hover {
+    background: #38BDF8;
+    color: #0a0f20;
 }
 
-.project-buttons a{
-background:#38BDF8;
-color:#0a0f20;
-padding:8px 15px;
-border-radius:8px;
-margin-right:10px;
-font-weight:600;
+.project-buttons {
+    display: flex;          /* use flex for proper spacing */
+    flex-wrap: wrap;        /* allow buttons to move to next line */
+    gap: 15px;              /* spacing between buttons */
+    margin-top: 20px;
+    justify-content: flex-start; /* align left on desktop */
+}
+
+.project-buttons a {
+    flex: 1 1 48%;          /* take up ~half width on desktop */
+    min-width: 140px;       /* ensures buttons don’t shrink too much */
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: #38BDF8;
+    color: #0a0f20;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.project-buttons a:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #38BDF8;
+}
+
+.extra-sections {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* desktop: 1 line */
+  gap: 50px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.extra-card {
+  background: rgba(10,15,32,0.85);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px #38BDF8;
+  transition: 0.3s;
+}
+
+.extra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #38BDF8, 0 0 40px #0ea5e9;
+}
+
+.extra-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* 📱 MOBILE VIEW */
+@media(max-width: 768px) {
+  .extra-sections {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
 }
 
 
@@ -582,7 +791,7 @@ font-weight:600;
 
     .hero-image img.floating { width: 250px; }
 
-    .projects .project-card { width: 90%; max-width: 350px; }
+    
     .skills .skill-card { width: 45%; font-size: 1rem; }
 
     .contact-container { flex-direction: column; gap: 25px; }
@@ -596,8 +805,41 @@ font-weight:600;
         margin-top: 20px; 
         margin-bottom: 20px;
     }
+
+     .project-buttons {
+    flex-direction: column;  /* stack buttons vertically */
+    gap: 15px;               /* more spacing */
+    align-items: center;     /* center buttons */
+  }
+
+  .project-buttons a {
+    width: 100%;             /* full width buttons on mobile */
+    max-width: 250px;        /* optional max width */
+  }
 }
 
+/* Fade-in and slide-up animation */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation for skills cards */
+.skill-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+.skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 </style>
 </head>
@@ -605,15 +847,19 @@ font-weight:600;
 
 <div id="particles-js"></div>
 
-<nav>
-    <div class="logo">Khushi Pandey</div>
-    <div class="nav-links">
-        <a href="#hero" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
+<nav class="navbar">
+  <h2 class="logo">Khushi Pandey</h2>
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#extras">Extras</a></li>
+    <li><a href="#contact">Contact</a></li>
+  
+  </ul>
 </nav>
 
 
@@ -626,9 +872,9 @@ font-weight:600;
 
   <div class="hero-content">
     <div class="hero-text">
-      <h1 class="neon-text">Khushi Pandey</h1>
-      <h2>Full-Stack Developer</h2>
-      <p class="typing"><span id="typed-text"></span></p>
+      <h1 class="neon-text fade-up">Khushi Pandey</h1>
+<h2 class="fade-up">Full-Stack Developer</h2>
+<p class="typing fade-up"><span id="typed-text"></span></p>
       <div class="hero-buttons">
         <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore My Work</button>
         <button onclick="window.open('Khushi_Pandey_CV.pdf', '_blank')">Download Resume</button>
@@ -642,7 +888,7 @@ font-weight:600;
 
 
 <section id="about">
-    <div class="card animated-about">
+    <div class="card animated-about fade-up">
         <h2>About Me</h2>
         <p>
             Hi! I’m <span class="highlight">Khushi Pandey</span>, a passionate <span class="highlight">full-stack developer</span> and <span class="highlight">AI/ML enthusiast</span>. 
@@ -663,49 +909,50 @@ font-weight:600;
     </div>
 </section>
 
+
 <section id="skills">
   <h2>Skills</h2>
   <div class="skills">
-    <div class="skill-card" data-info="HTML is the backbone of web pages, structuring content semantically.">
+    <div class="skill-card fade-up" data-info="HTML is the backbone of web pages, structuring content semantically.">
       <i class="fab fa-html5"></i> HTML
     </div>
-    <div class="skill-card" data-info="CSS styles web pages with layout, colors, animations, and responsive design.">
+    <div class="skill-card fade-up" data-info="CSS styles web pages with layout, colors, animations, and responsive design.">
       <i class="fab fa-css3-alt"></i> CSS
     </div>
-    <div class="skill-card" data-info="Bootstrap is a popular CSS framework for building responsive, mobile-first websites.">
+    <div class="skill-card fade-up" data-info="Bootstrap is a popular CSS framework for building responsive, mobile-first websites.">
       <i class="fab fa-bootstrap"></i> Bootstrap
     </div>
-    <div class="skill-card" data-info="JavaScript makes web pages interactive with dynamic behavior.">
+    <div class="skill-card fade-up" data-info="JavaScript makes web pages interactive with dynamic behavior.">
       <i class="fab fa-js-square"></i> JavaScript
     </div>
-    <div class="skill-card" data-info="Node.js allows server-side JavaScript for full-stack development.">
+    <div class="skill-card fade-up" data-info="Node.js allows server-side JavaScript for full-stack development.">
       <i class="fab fa-node-js"></i> Node.js
     </div>
-    <div class="skill-card" data-info="Express.js is a fast, minimal framework for building Node.js web applications.">
+    <div class="skill-card fade-up" data-info="Express.js is a fast, minimal framework for building Node.js web applications.">
       <i class="fab fa-node-js"></i> Express.js
     </div>
-    <div class="skill-card" data-info="React.js is a JavaScript library for building modern, interactive UIs.">
+    <div class="skill-card fade-up" data-info="React.js is a JavaScript library for building modern, interactive UIs.">
       <i class="fab fa-react"></i> React.js
     </div>
-    <div class="skill-card" data-info="Python is used for backend development, automation, and AI/ML projects.">
+    <div class="skill-card fade-up" data-info="Python is used for backend development, automation, and AI/ML projects.">
       <i class="fab fa-python"></i> Python
     </div>
-    <div class="skill-card" data-info="AI/ML is about building intelligent models to solve real-world problems.">
+    <div class="skill-card fade-up" data-info="AI/ML is about building intelligent models to solve real-world problems.">
       <i class="fas fa-robot"></i> AI/ML
     </div>
-    <div class="skill-card" data-info="Version control and collaboration for all your projects using Git & GitHub.">
+    <div class="skill-card fade-up" data-info="Version control and collaboration for all your projects using Git & GitHub.">
       <i class="fab fa-github"></i> Git & GitHub
     </div>
-    <div class="skill-card" data-info="Database management systems to organize, store, and retrieve data efficiently.">
+    <div class="skill-card fade-up" data-info="Database management systems to organize, store, and retrieve data efficiently.">
       <i class="fas fa-database"></i> DBMS
     </div>
-    <div class="skill-card" data-info="Tailwind CSS is a utility-first framework for fast, modern styling.">
+    <div class="skill-card fade-up" data-info="Tailwind CSS is a utility-first framework for fast, modern styling.">
       <i class="fab fa-css3-alt"></i> Tailwind CSS
     </div>
-    <div class="skill-card" data-info="MySQL is a relational database for storing structured data.">
+    <div class="skill-card fade-up" data-info="MySQL is a relational database for storing structured data.">
       <i class="fas fa-database"></i> MySQL
     </div>
-    <div class="skill-card" data-info="MongoDB is a NoSQL database for flexible, document-based storage.">
+    <div class="skill-card fade-up" data-info="MongoDB is a NoSQL database for flexible, document-based storage.">
       <i class="fas fa-database"></i> MongoDB
     </div>
   </div>
@@ -717,7 +964,7 @@ font-weight:600;
 
 <div class="projects-container">
 
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="GreenBill.png" alt="GreenBill">
@@ -750,7 +997,7 @@ Track bills, store history and manage everything digitally.
 
 
 
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="NyaySetu.png" alt="NyaySetu">
@@ -781,7 +1028,7 @@ Platform where advocates and clients can connect and book consultations online.
 </div>
 
 
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="Task-manager.png" alt="Task Manager API">
@@ -809,7 +1056,7 @@ RESTful API for managing tasks with features like create, update, delete, and au
 </div>
 
 <!-- India Explore (React Project) -->
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="Indoparampara.png" alt="India Explore">
@@ -836,8 +1083,7 @@ A React-based tourism website where users can explore different states of India,
 </div>
 </div>
 
-
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="Netflix.png" alt="Netflix Clone">
@@ -861,13 +1107,9 @@ Netflix UI clone with responsive design and movie browsing layout.
 </div>
 
 </div>
-
-
-
 </div>
-
 <!-- Amazon Clone -->
-<div class="project-row">
+<div class="project-row fade-up">
 
 <div class="project-image">
 <img src="Amazon.jpg" alt="Amazon Clone">
@@ -894,30 +1136,68 @@ A responsive Amazon-inspired e-commerce website UI with product listings, naviga
 
 </div>
 
+
+<section id="extras">
+<h2>Extras</h2>
+<section class="extra-sections">
+
+  <div class="extra-card fade-up">
+    <h2>My Journey</h2>
+    
+<p>👩‍💻 Started coding in high school, building small projects and learning web development basics</p>
+<p>🚀 Developed multiple full-stack projects, applying real-world problem-solving and scalable solutions</p>
+   
+  </div>
+
+  <div class="extra-card fade-up">
+    <h2>Currently Working On</h2>
+   
+      <p>🔍 Exploring advanced AI/ML algorithms and their applications</p>
+      <p>📚 Strengthening Data Structures & System Design</p>
+    </ul>
+
+  </div>
+
+  <div class="extra-card fade-up">
+    <h2>What I Do</h2>
+   
+      <p>🌐 Full-stack web development</p>
+      <p>🤖 AI/ML-based solutions</p>
+      <p>⚡ Responsive UI/UX design</p>
+   
+  </div>
+
+  <div class="extra-card fade-up">
+   <h2>Achievements</h2>
+<p>🚀 Participated in Flipkart GWC (Girls Wanna Code) and Google Big Code Challenge</p>
+  <p>🌐 Explored open-source development and applied for Google Summer of Code (GSoC), focusing on real-world contributions</p>
+</ul>
+
+</section>
 </section>
 
 <section id="contact" class="contact">
-  <h2 class="neon-text">Let's Connect</h2>
-  <p class="contact-subtitle">I’d love to hear from you! Reach out via email, socials, or drop a message below.</p>
+  <h2 class="neon-text fade-up">Let's Connect</h2>
+  <p class="contact-subtitle fade-up">I’d love to hear from you! Reach out via email, socials, or drop a message below.</p>
 
-  <div class="contact-container">
+  <div class="contact-container fade-up">
     
-    <div class="contact-info">
+    <div class="contact-info fade-up">
       <div class="contact-item">
     <i class="fas fa-envelope"></i>
     <a href="mailto:kp8238977@gmail.com">kp8238977@gmail.com</a>
 </div>
-<div class="contact-item">
+<div class="contact-item fade-up">
     <i class="fas fa-phone"></i>
     <a href="tel:+919918458742">+91 9918458742</a>
 </div>
-<div class="contact-item">
+<div class="contact-item fade-up">
     <i class="fas fa-map-marker-alt"></i>
     <a href="https://www.google.com/maps/search/?api=1&query=Kanpur,India" target="_blank">Kanpur, India</a>
 </div>
 
 
-      <div class="social-icons">
+      <div class="social-icons fade-up">
   <a href="https://www.linkedin.com/in/khushi-pandey-12a104343/" target="_blank"><i class="fab fa-linkedin"></i></a>
   <a href="https://www.github.com/khushi123438" target="_blank"><i class="fab fa-github"></i></a>
   <a href="mailto:kp8238977@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -1110,7 +1390,43 @@ otherCards.forEach(card => fadeObserver.observe(card));
     card.addEventListener("mouseleave", () => {
       card.classList.remove("show-tooltip");
     });
+
+    
   });
+
+  // Hamburger menu toggle
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinksMenu = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+  navLinksMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinksMenu.classList.remove("active");
+  });
+});
+
+function revealOnScroll() {
+    const elements = document.querySelectorAll('.fade-up, .skill-card, .card');
+    const windowHeight = window.innerHeight;
+    
+    elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            el.classList.add('visible');
+        }
+    });
+}
+
+
+// Initial check
+revealOnScroll();
+
+// Listen for scroll
+window.addEventListener('scroll', revealOnScroll);
+  
 </script>
 </body>
 </html>
